@@ -2,7 +2,7 @@ const { Personalities } = require("../../models/personalities");
 const { HttpError } = require("../../helpers");
 
 const getOnePersonalities = async (req, res) => {
-  const { personalitiesId } = req.params;
+  const { id: personalitiesId } = req.params;
 
   const result = await Personalities.findOne({ _id: personalitiesId });
 

@@ -6,6 +6,8 @@ const { validateBody, autentificate } = require("../../middlewares");
 const { schemas } = require("../../models/personalities");
 const ctrl = require("../../controllers/personalities");
 
+router.get("/", ctrl.getAllPersonalities);
+
 router.get("/:id", ctrl.getPersonalityById);
 
 router.post(

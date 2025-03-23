@@ -2,17 +2,16 @@ const { Schema, model } = require("mongoose");
 const Joi = require("joi");
 const { handleMongooseError } = require("../helpers");
 
-const emailRegexp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
 const userSchema = new Schema(
   {
     password: {
       type: String,
       required: [true, "Set password for user"],
     },
-    email: {
+    login: {
       type: String,
-      required: [true, "Email is required"],
-      match: emailRegexp,
+      required: [true, "Login is required"],
       uniqe: true,
     },
     token: String,
@@ -24,12 +23,12 @@ userSchema.post("save", handleMongooseError);
 
 const registerSchema = Joi.object({
   password: Joi.string().required(),
-  email: Joi.string().pattern(emailRegexp).required(),
+  login: Joi.string().required(),
 });
 
 const loginSchema = Joi.object({
   password: Joi.string().required(),
-  email: Joi.string().pattern(emailRegexp).required(),
+  login: Joi.string().required(),
 });
 
 const schemas = {

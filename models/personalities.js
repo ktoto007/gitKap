@@ -5,6 +5,14 @@ const { handleMongooseError } = require("../helpers");
 const emailRegexp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const personalitiesSchema = new Schema(
   {
+    fullname: {
+      type: String,
+      required: [true, "fullname is required"],
+    },
+    fullname_en: {
+      type: String,
+      required: [true, "fullname_en is required"],
+    },
     scy_rank: {
       type: String,
       required: [true, "scy_rank is required"],
@@ -78,6 +86,8 @@ const personalitiesSchema = new Schema(
 personalitiesSchema.post("save", handleMongooseError);
 
 const personalityValidationSchema = Joi.object({
+  fullname: Joi.string().required(),
+  fullname_en: Joi.string().required(),
   scy_rank: Joi.string().required(),
   scy_rank_en: Joi.string().required(),
   scy_degree: Joi.string().required(),

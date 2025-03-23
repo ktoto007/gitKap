@@ -1,7 +1,8 @@
 const { Personalities } = require("../../models/personalities");
 
 const addPersonalities = async (req, res) => {
-  const { personalitiesId } = req.params;
+  
+  const {  id: personalitiesId } = req.params;
 
   const updatedPersonalities = await Personalities.findByIdAndUpdate(
     personalitiesId,
@@ -11,7 +12,7 @@ const addPersonalities = async (req, res) => {
     }
   );
 
-  res.status(201).json({ ...updatedPersonalities });
+  res.status(200).json(updatedPersonalities);
 };
 
 module.exports = addPersonalities;

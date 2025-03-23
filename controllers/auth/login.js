@@ -7,17 +7,17 @@ const { HttpError } = require("../../helpers");
 const { Secret_Key } = process.env;
 
 const login = async (req, res) => {
-  const { email, password } = req.body;
-  const user = await User.findOne({ email });
+  const { login, password } = req.body;
+  const user = await User.findOne({ login });
 
   if (!user) {
-    throw HttpError(401, "Email or password is wrong");
+    throw HttpError(401, "login or password is wrong");
   }
 
   const passwordCompare = await bcrypt.compare(password, user.password);
 
   if (!passwordCompare) {
-    throw HttpError(401, "Email or password is wrong");
+    throw HttpError(401, "login or password is wrong");
   }
   const id = user._id;
   const payload = {

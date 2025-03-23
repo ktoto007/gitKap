@@ -5,7 +5,7 @@ const addPersonalities = async (req, res) => {
     ...req.body,
   });
 
-  res.status(201).json({ ...newPersonalities });
+  res.status(201).json(newPersonalities );
 };
 
 module.exports = addPersonalities;
