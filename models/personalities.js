@@ -38,7 +38,7 @@ const personalitiesSchema = new Schema(
       required: [true, "scy_position_en is required"],
     },
     links: {
-      type: Array,
+      type: String,
       required: [true, "links is required"],
     },
     cv: {
@@ -78,6 +78,7 @@ const personalitiesSchema = new Schema(
       type: String,
       required: [true, "teaching_work_en is required"],
     },
+    photo: String,
     token: String,
   },
   { versionKey: false, timestamps: true }
@@ -94,7 +95,7 @@ const personalityValidationSchema = Joi.object({
   scy_degree_en: Joi.string().required(),
   scy_position: Joi.string().required(),
   scy_position_en: Joi.string().required(),
-  links: Joi.array().required(),
+  links: Joi.string().required(),
   cv: Joi.binary(),
   contact_place: Joi.string().required(),
   contact_email: Joi.string().pattern(emailRegexp).required(),
@@ -104,6 +105,7 @@ const personalityValidationSchema = Joi.object({
   scientific_activity_en: Joi.string().required(),
   teaching_work: Joi.string().required(),
   teaching_work_en: Joi.string().required(),
+  photo: Joi.binary(), 
 });
 
 const schemas = { personalityValidationSchema };

@@ -2,7 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 
-const { validateBody, autentificate } = require("../../middlewares");
+const { validateBody, autentificate, upload } = require("../../middlewares");
 const { schemas } = require("../../models/personalities");
 const ctrl = require("../../controllers/personalities");
 
@@ -13,6 +13,7 @@ router.get("/:id", ctrl.getPersonalityById);
 router.post(
   "/add",
   autentificate,
+  upload.single("photo"),
   validateBody(schemas.personalityValidationSchema),
   ctrl.addPersonalities
 );
@@ -20,6 +21,7 @@ router.post(
 router.post(
   "/update/:id",
   autentificate,
+  upload.single("photo"),
   validateBody(schemas.personalityValidationSchema),
   ctrl.updatePersonalities
 );

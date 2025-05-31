@@ -1,5 +1,5 @@
 const { Personalities } = require("../../models/personalities");
-const pagination = require("../../utils/pagination");
+const { pagination } = require("../../utils");
 
 const getAllPersonalities = async (req, res) => {
     const {  page = 1, limit = 12 } = req.query;
