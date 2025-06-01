@@ -4,7 +4,7 @@ const { pagination } = require("../../utils");
 const getNews = async (req, res) => {
   const { page = 1, limit = 12 } = req.query;
 
-  const { result, currentPage, totalPages } = await pagination(
+  const { results, currentPage, totalPages } = await pagination(
     News,
     {},
     page,
@@ -12,7 +12,7 @@ const getNews = async (req, res) => {
   );
 
   res.status(200).json({
-    news: result,
+    news: results,
     currentPage,
     totalPages,
   });

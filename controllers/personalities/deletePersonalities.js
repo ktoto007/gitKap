@@ -5,15 +5,16 @@ const { HttpError } = require("../../helpers");
 const deletePersonalities = async (req, res) => {
   const { id: personalitiesId } = req.params;
 
-  const { photo } = await Personalities.findOne({ _id: personalitiesId });
+  const news = await Personalities.findOne({ _id: personalitiesId });
 
-  deleteImgInCloudinary(photo);
-
-  const result = await Personalities.findByIdAndDelete(personalitiesId);
-
-  if (!result) {
+  if (!news) {
     throw HttpError(404, "Not Found");
   }
+
+  deleteImgInCloudinary(news.photo);
+
+  await Personalities.findByIdAndDelete(personalitiesId);
+
   res.status(204).json();
 };
 

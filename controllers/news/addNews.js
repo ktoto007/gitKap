@@ -2,7 +2,7 @@ const { News } = require("../../models/news");
 const { uploadImgTocloud } = require("../../utils");
 
 const addNews = async (req, res) => {
-  if (!req.files?.length === 0) {
+  if (req.files?.length <= 1) {
     res.status(400).json("photos is required");
     return;
   }

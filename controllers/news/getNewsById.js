@@ -1,4 +1,5 @@
 const { News } = require("../../models/news");
+const { HttpError } = require("../../helpers");
 
 const getOneNews = async (req, res) => {
   const { id: newsId } = req.params;

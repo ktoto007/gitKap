@@ -2,8 +2,8 @@ const { News } = require("../../models/news");
 const { deleteImgInCloudinary, uploadImgTocloud } = require("../../utils");
 
 const updateNews = async (req, res) => {
-  if (!req.files?.length === 0) {
-    res.status(400).json("photos is required");
+  if (req.files?.length <= 1) {
+    res.status(400).json("photos is required and must be more than one photo");
     return;
   }
   const { id: newsId } = req.params;
