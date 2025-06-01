@@ -105,7 +105,7 @@ const personalityValidationSchema = Joi.object({
   scientific_activity_en: Joi.string().required(),
   teaching_work: Joi.string().required(),
   teaching_work_en: Joi.string().required(),
-  photo: Joi.binary(), 
+  photo: Joi.binary(),
 });
 
 const schemas = { personalityValidationSchema };
