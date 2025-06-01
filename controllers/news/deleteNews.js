@@ -1,5 +1,5 @@
-import { News } from "../../models/news";
-import { deleteImgInCloudinary } from "../../utils";
+const { News } = require("../../models/news");
+const { deleteImgInCloudinary } = require("../../utils");
 
 const deleteNews = async (req, res) => {
   const { id: newsId } = req.params;

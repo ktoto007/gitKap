@@ -1,4 +1,4 @@
-import { News } from "../../models/news";
+const { News } = require("../../models/news");
 
 const getOneNews = async (req, res) => {
   const { id: newsId } = req.params;

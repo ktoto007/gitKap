@@ -1,4 +1,4 @@
-import { News } from "../../models/news";
+const { News } = require("../../models/news");
 const { pagination } = require("../../utils");
 
 const getNews = async (req, res) => {

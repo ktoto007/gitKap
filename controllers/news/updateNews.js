@@ -1,5 +1,5 @@
-import { News } from "../../models/news";
-import { deleteImgInCloudinary, uploadImgTocloud } from "../../utils";
+const { News } = require("../../models/news");
+const { deleteImgInCloudinary, uploadImgTocloud } = require("../../utils");
 
 const updateNews = async (req, res) => {
   if (!req.files?.length === 0) {
